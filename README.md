@@ -6,7 +6,9 @@
 # PowerInfer
 Local inference engine
 
-Use a compatible model 
+**aknowledgements**: [SJTU-IPADS/PowerInfer](https://github.com/SJTU-IPADS/PowerInfer)
+
+* Use a compatible model 
 
 e.g.
 
