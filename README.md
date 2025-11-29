@@ -26,7 +26,7 @@ cmake --build build_amd --config Release
 ### Windows
 
 ```
-cmake -S . -B build -DLLAMA_STATIC=ON
+cmake -S . -B build -DLLAMA_STATIC=ON -A X64
 cmake --build build --config Release
 ```
 
