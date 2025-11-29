@@ -5,3 +5,30 @@
 
 # PowerInfer
 Local inference engine
+
+### Apple Silicon
+
+```
+cmake -S . -B build_arm -DLLAMA_METAL=ON -DLLAMA_ACCELERATE=ON
+cmake --build build_arm --config Release
+```
+
+### Intel
+
+```
+cmake -S . -B build_amd -DLLAMA_ACCELERATE=ON
+cmake --build build_amd --config Release
+```
+
+> [!WARNING]
+> `-DLLAMA_STATIC=ON` is not applicable for macOS. You get `ld: library 'crt0.o' not found` error.
+
+### Windows
+
+```
+cmake -S . -B build -DLLAMA_STATIC=ON
+cmake --build build --config Release
+```
+
+> [!WARNING]
+> `-DLLAMA_DIRECTML=ON` is only available on some experimental forks.
