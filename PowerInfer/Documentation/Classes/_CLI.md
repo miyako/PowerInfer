@@ -1,6 +1,7 @@
 # _CLI
 
 `_CLI` is the base class to implement console program proxies. Extend this class to implement a specific command line interface.
+
 ## .new() 
 
 **.new**($executableName : Text) : cs._CLI
