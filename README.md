@@ -35,7 +35,7 @@ cmake --build build_amd --config Release
 ### Windows
 
 ```
-cmake -S . -B build -DLLAMA_STATIC=ON -A X64
+cmake -S . -B build -DLLAMA_STATIC=ON -A X64 -DGGML_USE_AVX2=ON -DLLAMA_SHARED=OFF -DBUILD_SHARED_LIBS=OFF -DGGML_IQK_FLASH_ATTENTION=OFF -DGGML_IQK_MOE=OFF
 cmake --build build --config Release
 ```
 
