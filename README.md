@@ -8,15 +8,6 @@ Local inference engine
 
 **aknowledgements**: [SJTU-IPADS/PowerInfer](https://github.com/SJTU-IPADS/PowerInfer)
 
-* Use a compatible model 
-
-e.g.
-
-- LLaMA(ReLU)-2-7B : PowerInfer/ReluLLaMA-7B-PowerInfer-GGUF
-- LLaMA(ReLU)-2-13B : PowerInfer/ReluLLaMA-13B-PowerInfer-GGUF
-- Falcon(ReLU)-40B : PowerInfer/ReluFalcon-40B-PowerInfer-GGUF
-- LLaMA(ReLU)-2-70B : PowerInfer/ReluLLaMA-70B-PowerInfer-GGUF
-
 ### Apple Silicon
 
 ```
