@@ -1,0 +1,16 @@
+{
+	"methods": {
+		"TEST_PowerInfer_terminate": {
+			"timeStamp": "2025-11-29T11:44:10Z",
+			"attributes": {
+				"invisible": true
+			}
+		},
+		"TEST_PowerInfer_start": {
+			"timeStamp": "2025-11-29T13:01:52Z",
+			"attributes": {
+				"invisible": true
+			}
+		}
+	}
+}
