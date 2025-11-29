@@ -18,7 +18,7 @@ e.g.
 ### Apple Silicon
 
 ```
-cmake -S . -B build_arm -DLLAMA_METAL=ON -DBUILD_SHARED_LIBS=OFF
+cmake -S . -B build_arm -DLLAMA_METAL=ON -DLLAMA_ACCELERATE=ON
 cmake --build build_arm --config Release
 ```
 
