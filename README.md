@@ -11,9 +11,11 @@ Local inference engine
 ### Apple Silicon
 
 ```
-cmake -S . -B build_arm -DLLAMA_METAL=ON -DLLAMA_ACCELERATE=ON
+cmake -S . -B build_arm -DLLAMA_METAL=OFF -DLLAMA_ACCELERATE=ON
 cmake --build build_arm --config Release
 ```
+
+**Note**: Metal backend for sparse inference on macOS is not ready. 
 
 ### Intel
 
