@@ -15,7 +15,7 @@ layout: default
 
 #### Usage
 
-Instantiate `cs.PowerInfer.PowerInfer`  in your *On Startup* database method:
+Instantiate `cs.PowerInfer.PowerInfer` in your *On Startup* database method:
 
 ```4d
 var $PowerInfer : cs.PowerInfer.PowerInfer
