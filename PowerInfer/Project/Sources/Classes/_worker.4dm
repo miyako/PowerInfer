@@ -9,7 +9,7 @@ Function start($option : Object)
 	End if 
 	
 	var $signal : 4D:C1709.Signal
-	$signal:=New signal:C1641("PowerInfer")
+	$signal:=New signal:C1641("llama.cpp")
 	
 	CALL WORKER:C1389($signal.description; This:C1470._start; $option; $signal)
 	
@@ -17,13 +17,13 @@ Function start($option : Object)
 	
 Function _start($option : Object; $signal : 4D:C1709.Signal)
 	
-	var $PowerInfer : cs:C1710._server
-	$PowerInfer:=cs:C1710._server.new()
+	var $llama : cs:C1710._server
+	$llama:=cs:C1710._server.new()
 	
 	If (OB Instance of:C1731(__WORKER__; 4D:C1709.SystemWorker)) && (Not:C34(__WORKER__.terminated))
 		//already started
 	Else 
-		__WORKER__:=$PowerInfer.start($option)
+		__WORKER__:=$llama.start($option)
 	End if 
 	
 	$signal.trigger()
@@ -39,7 +39,7 @@ Function _terminate($signal : 4D:C1709.Signal)
 Function terminate()
 	
 	var $signal : 4D:C1709.Signal
-	$signal:=New signal:C1641("PowerInfer")
+	$signal:=New signal:C1641("llama.cpp")
 	
 	CALL WORKER:C1389($signal.description; This:C1470._terminate; $signal)
 	
@@ -62,7 +62,7 @@ Function _isRunning($signal : 4D:C1709.Signal)
 Function isRunning() : Boolean
 	
 	var $signal : 4D:C1709.Signal
-	$signal:=New signal:C1641("PowerInfer")
+	$signal:=New signal:C1641("llama.cpp")
 	
 	CALL WORKER:C1389($signal.description; This:C1470._isRunning; $signal)
 	
