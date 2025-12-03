@@ -4,57 +4,45 @@ layout: default
 
 ![version](https://img.shields.io/badge/version-20%2B-E23089)
 ![platform](https://img.shields.io/static/v1?label=platform&message=mac-intel%20|%20mac-arm%20|%20win-64&color=blue)
-[![license](https://img.shields.io/github/license/miyako/llama-cpp)](LICENSE)
-![downloads](https://img.shields.io/github/downloads/miyako/llama-cpp/total)
+[![license](https://img.shields.io/github/license/miyako/PowerInfer)](LICENSE)
+![downloads](https://img.shields.io/github/downloads/miyako/PowerInfer/total)
 
-# Use llama.cpp from 4D
+# Use PowerInfer from 4D
 
 #### Abstract
 
-[**llama.cpp**](https://github.com/ggml-org/llama.cpp) is an open-source project that allows you to run Meta's LLaMA language models locally on CPUs without heavy frameworks like PyTorch or TensorFlow. Essentially, it’s a **lightweight C++ implementation optimized for inference**.
+[PowerInfer](https://github.com/SJTU-IPADS/PowerInfer) is a highly customised inference engine based on llama.cpp. It uses a special file format (`.powerinfer.gguf`) that includes an auxiliary "predictor" model to predict which neurones to activate. This optimised mode known as "sparse inference" is said to be up to 11x faster than the standard llama.cpp which is called "dense inference" for distinction.
 
 #### Usage
 
-Instantiate `cs.llama.llama`  in your *On Startup* database method:
+Instantiate `cs.PowerInfer.PowerInfer`  in your *On Startup* database method:
 
 ```4d
-var $llama : cs.llama.llama
+var $PowerInfer : cs.PowerInfer.PowerInfer
 
 If (True)
-    $llama:=cs.llama.llama.new()  //default
+    $PowerInfer:=cs.PowerInfer.PowerInfer.new()  //default
 Else 
     var $modelsFolder : 4D.Folder
-    $modelsFolder:=Folder(fk home folder).folder(".llama-cpp")
-    var $lang; $URL : Text
-    var $file : 4D.File
-    $lang:=Get database localization(Current localization)
-    Case of 
-        : ($lang="ja")
-            $file:=$modelsFolder.file("Llama-3-ELYZA-JP-8B-q4_k_m.gguf")
-            $URL:="https://huggingface.co/elyza/Llama-3-ELYZA-JP-8B-GGUF/resolve/main/Llama-3-ELYZA-JP-8B-q4_k_m.gguf"
-        Else 
-            $file:=$modelsFolder.file("nomic-embed-text-v1.5.f16.gguf")
-            $URL:="https://huggingface.co/nomic-ai/nomic-embed-text-v1.5-GGUF/resolve/main/nomic-embed-text-v1.5.f16.gguf"
-    End case 
+    $modelsFolder:=Folder(fk home folder).folder(".PowerInfer")
+    $file:=$modelsFolder.file("bamboo-7b-v0.1.Q4_0.powerinfer.gguf")
+    $URL:="https://huggingface.co/PowerInfer/Bamboo-base-v0.1-gguf/blob/main/bamboo-7b-v0.1.Q4_0.powerinfer.gguf"
     var $port : Integer
     $port:=8080
-    $llama:=cs.llama.new($port; $file; $URL; {\
-      ctx_size: 2048; \
-      batch_size: 2048; \
-      threads: 4; \
-      threads_batch: 4; \
-      threads_http: 4; \
-      temp: 0.7; \
-      top_k: 40; \
-      top_p: 0.9; \
-      repea]t_penalty: 1.1})
-End if
+    $PowerInfer:=cs.PowerInfer.PowerInfer.new($port; $file; $URL; {\
+    ctx_size: 2048; \
+    batch_size: 2048; \
+    threads: 4; \
+    threads_batch: 4; \
+    temp: 0.7; \
+    vram_budget: 4})
+End if 
 ```
 
 Unless the server is alraedy running (in which case the costructor does nothing), the following procedure runs in the background:
 
 1. The specified model is download via HTTP
-2. The `llama-server` program is started
+2. The `server` program is started
 
 Now you can test the server:
 
@@ -81,10 +69,31 @@ $responseEmbeddings:=$AIClient.embeddings.create($text)
 Finally to terminate the server:
 
 ```4d
-var $llama : cs.llama.llama
-$llama:=cs.llama.llama.new()
-$llama.terminate()
+var $PowerInfer : cs.PowerInfer.PowerInfer
+$PowerInfer:=cs.PowerInfer.PowerInfer.new()
+$PowerInfer.terminate()
 ```
+
+#### Models
+
+Tools to generate the predictor model is not public. You can only use pre-trained predictors from the official [Hugging Face](https://huggingface.co/PowerInfer) list of models. The "clip" models cap "outlier" neurones in the model's math. 
+
+Official models are quite large in size. You can use the `quantize` tool to reduce the file size. 
+
+Only a few official models are published
+|-|-:|
+|Model|Size|
+|[bamboo-7b-v0.1.powerinfer.gguf](https://huggingface.co/PowerInfer/Bamboo-base-v0.1-gguf/resolve/main/bamboo-7b-v0.1.powerinfer.gguf)|
+`16` GB|
+|[bamboo-7b-v0.1.Q4_0.powerinfer.gguf](https://huggingface.co/PowerInfer/Bamboo-base-v0.1-gguf/resolve/main/bamboo-7b-v0.1.Q4_0.powerinfer.gguf)|`4.68` GB|
+|[bamboo-7b-dpo-v0.1.powerinfer.gguf](https://huggingface.co/PowerInfer/Bamboo-DPO-v0.1-gguf/resolve/main/bamboo-7b-dpo-v0.1.powerinfer.gguf)|`16` GB|
+|[bamboo-7b-dpo-v0.1.Q4_0.powerinfer.gguf](https://huggingface.co/PowerInfer/Bamboo-DPO-v0.1-gguf/resolve/main/bamboo-7b-dpo-v0.1.Q4_0.powerinfer.gguf)|`4.68` GB|
+
+#### Apple Silicon
+
+The CLI supports a `--vram-budget` option to budget VRAM usage but this switch is not available on Apple Silicon (it is intended for CUDA).
+
+Unlike the original llama.cpp, there is no Metal optimisation (yet).
 
 #### AI Kit compatibility
 
