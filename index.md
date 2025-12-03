@@ -81,8 +81,9 @@ Tools to generate the predictor model is not public. You can only use pre-traine
 Official models are quite large in size. You can use the `quantize` tool to reduce the file size. 
 
 Only a few official models are published:
-|-|-:|
+
 |Model|Size|
+|-|-:|
 |[bamboo-7b-v0.1.powerinfer.gguf](https://huggingface.co/PowerInfer/Bamboo-base-v0.1-gguf/resolve/main/bamboo-7b-v0.1.powerinfer.gguf)|
 `16` GB|
 |[bamboo-7b-v0.1.Q4_0.powerinfer.gguf](https://huggingface.co/PowerInfer/Bamboo-base-v0.1-gguf/resolve/main/bamboo-7b-v0.1.Q4_0.powerinfer.gguf)|`4.68` GB|
