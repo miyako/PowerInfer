@@ -84,8 +84,7 @@ Only a few official models are published:
 
 |Model|Size|
 |-|-:|
-|[bamboo-7b-v0.1.powerinfer.gguf](https://huggingface.co/PowerInfer/Bamboo-base-v0.1-gguf/resolve/main/bamboo-7b-v0.1.powerinfer.gguf)|
-`16` GB|
+|[bamboo-7b-v0.1.powerinfer.gguf](https://huggingface.co/PowerInfer/Bamboo-base-v0.1-gguf/resolve/main/bamboo-7b-v0.1.powerinfer.gguf)|`16` GB|
 |[bamboo-7b-v0.1.Q4_0.powerinfer.gguf](https://huggingface.co/PowerInfer/Bamboo-base-v0.1-gguf/resolve/main/bamboo-7b-v0.1.Q4_0.powerinfer.gguf)|`4.68` GB|
 |[bamboo-7b-dpo-v0.1.powerinfer.gguf](https://huggingface.co/PowerInfer/Bamboo-DPO-v0.1-gguf/resolve/main/bamboo-7b-dpo-v0.1.powerinfer.gguf)|`16` GB|
 |[bamboo-7b-dpo-v0.1.Q4_0.powerinfer.gguf](https://huggingface.co/PowerInfer/Bamboo-DPO-v0.1-gguf/resolve/main/bamboo-7b-dpo-v0.1.Q4_0.powerinfer.gguf)|`4.68` GB|
