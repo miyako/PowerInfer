@@ -1,4 +1,4 @@
-Class constructor($port : Integer; $file : 4D:C1709.File; $URL : Text; $options : Object)
+Class constructor($port : Integer; $file : 4D:C1709.File; $URL : Text; $options : Object; $formula : 4D:C1709.Function)
 	
 	var $PowerInfer : cs:C1710._worker
 	$PowerInfer:=cs:C1710._worker.new()
@@ -16,14 +16,14 @@ Class constructor($port : Integer; $file : 4D:C1709.File; $URL : Text; $options 
 			$port:=8080
 		End if 
 		
-		CALL WORKER:C1389("PowerInfer_Start"; This:C1470._Start; $port; $file; $URL; $options)
+		CALL WORKER:C1389("PowerInfer_Start"; This:C1470._Start; $port; $file; $URL; $options; $formula)
 		
 	End if 
 	
-Function _Start($port : Integer; $file : 4D:C1709.File; $URL : Text; $options : Object)
+Function _Start($port : Integer; $file : 4D:C1709.File; $URL : Text; $options : Object; $formula : 4D:C1709.Function)
 	
 	var $model : cs:C1710.Model
-	$model:=cs:C1710.Model.new($port; $file; $URL; $options)
+	$model:=cs:C1710.Model.new($port; $file; $URL; $options; $formula)
 	
 Function terminate()
 	

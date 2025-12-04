@@ -16,5 +16,6 @@ Else
 		threads: 4; \
 		threads_batch: 4; \
 		temp: 0.7; \
-		vram_budget: 4})
+		vram_budget: 4}; \
+		Formula:C1597(ALERT:C41(This:C1470.file.name+($1.success ? " started!" : " did not start..."))))
 End if 
