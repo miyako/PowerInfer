@@ -29,7 +29,7 @@ Else
     $URL:="https://huggingface.co/PowerInfer/Bamboo-base-v0.1-gguf/blob/main/bamboo-7b-v0.1.Q4_0.powerinfer.gguf"
     var $port : Integer
     $port:=8080
-    $PowerInfer:=cs.PowerInfer.new($port; $file; $URL; {\
+    $PowerInfer:=cs.PowerInfer.PowerInfer.new($port; $file; $URL; {\
         ctx_size: 2048; \
         batch_size: 2048; \
         threads: 4; \
