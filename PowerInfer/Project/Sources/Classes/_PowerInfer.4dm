@@ -11,8 +11,6 @@ Class constructor($command : Text; $controller : 4D:C1709.Class)
 	Case of 
 		: ($command="embedding")
 			$program:="embedding"
-		: ($command="convert")
-			$program:="convert-llama2c-to-ggml"
 		: ($command="quantize")
 			$program:="quantize"
 		: ($command="cli")
