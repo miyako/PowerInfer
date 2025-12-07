@@ -20,7 +20,7 @@ Instantiate `cs.PowerInfer.PowerInfer` in your *On Startup* database method:
 ```4d
 var $PowerInfer : cs.PowerInfer
 
-If (False)
+If (True)
     $PowerInfer:=cs.PowerInfer.new()  //default
 Else 
     var $modelsFolder : 4D.Folder
