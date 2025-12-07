@@ -6,7 +6,6 @@ layout: default
 ![platform](https://img.shields.io/static/v1?label=platform&message=mac-intel%20|%20mac-arm%20|%20win-64&color=blue)
 [![license](https://img.shields.io/github/license/miyako/PowerInfer)](LICENSE)
 ![downloads](https://img.shields.io/github/downloads/miyako/PowerInfer/total)
-[![experimental](http://badges.github.io/stability-badges/dist/experimental.svg)](http://github.com/badges/stability-badges)
 
 # Use PowerInfer from 4D
 
