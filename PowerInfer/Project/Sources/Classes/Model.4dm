@@ -27,7 +27,7 @@ Class constructor($port : Integer; $file : 4D:C1709.File; $URL : Text; $options 
 	This:C1470.options.model:=$file
 	This:C1470._onResponse:=$formula
 	This:C1470.returnResponseBody:=False:C215
-	This:C1470.decodeData:=True:C214
+	This:C1470.decodeData:=False:C215
 	This:C1470.bufferSize:=1*(1024^2)
 	
 	Case of 
