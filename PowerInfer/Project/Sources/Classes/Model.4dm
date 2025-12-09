@@ -27,7 +27,7 @@ Class constructor($port : Integer; $file : 4D:C1709.File; $URL : Text; $options 
 	This:C1470._onResponse:=$formula
 	This:C1470.returnResponseBody:=False:C215
 	This:C1470.decodeData:=True:C214
-	This:C1470.bufferSize:=8192
+	This:C1470.bufferSize:=100*(1024^2)
 	
 	Case of 
 		: (OB Instance of:C1731($file; 4D:C1709.File))
