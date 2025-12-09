@@ -8,9 +8,6 @@ Else
 	$modelsFolder:=Folder:C1567(fk home folder:K87:24).folder(".PowerInfer")
 	$file:=$modelsFolder.file("bamboo-7b-v0.1.Q4_0.powerinfer.gguf")
 	$URL:="https://huggingface.co/PowerInfer/Bamboo-base-v0.1-gguf/resolve/main/bamboo-7b-v0.1.Q4_0.powerinfer.gguf"
-	//ERROR! HTTPRequest stops after 384 MB
-	//$file:=$modelsFolder.file("bamboo-7b-v0.1.powerinfer.gguf")
-	//$URL:="https://huggingface.co/PowerInfer/Bamboo-base-v0.1-gguf/resolve/main/bamboo-7b-v0.1.powerinfer.gguf"
 	var $port : Integer
 	$port:=8080
 	$PowerInfer:=cs:C1710.PowerInfer.new($port; $file; $URL; {\
