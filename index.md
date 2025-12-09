@@ -20,16 +20,13 @@ Instantiate `cs.PowerInfer.PowerInfer` in your *On Startup* database method:
 ```4d
 var $PowerInfer : cs.PowerInfer
 
-If (True)
+If (False)
     $PowerInfer:=cs.PowerInfer.new()  //default
 Else 
     var $modelsFolder : 4D.Folder
     $modelsFolder:=Folder(fk home folder).folder(".PowerInfer")
-    //$file:=$modelsFolder.file("bamboo-7b-v0.1.Q4_0.powerinfer.gguf")
-    //$URL:="https://huggingface.co/PowerInfer/Bamboo-base-v0.1-gguf/resolve/main/bamboo-7b-v0.1.Q4_0.powerinfer.gguf"
-    //ERROR! HTTPRequest stops after 384 MB
-    $file:=$modelsFolder.file("bamboo-7b-v0.1.powerinfer.gguf")
-    $URL:="https://huggingface.co/PowerInfer/Bamboo-base-v0.1-gguf/resolve/main/bamboo-7b-v0.1.powerinfer.gguf"
+    $file:=$modelsFolder.file("bamboo-7b-v0.1.Q4_0.powerinfer.gguf")
+    $URL:="https://huggingface.co/PowerInfer/Bamboo-base-v0.1-gguf/resolve/main/bamboo-7b-v0.1.Q4_0.powerinfer.gguf"
     var $port : Integer
     $port:=8080
     $PowerInfer:=cs.PowerInfer.new($port; $file; $URL; {\
@@ -37,6 +34,7 @@ Else
     batch_size: 2048; \
     threads: 4; \
     threads_batch: 4; \
+    log_disable: True; \
     vram_budget: 4}; \
     Formula(ALERT(This.file.name+($1.success ? " started!" : " did not start..."))))
 End if 
