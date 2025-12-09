@@ -1,5 +1,7 @@
 extra/*
 PowerInfer/userPreferences.*
 PowerInfer/Data/*
-PowerInfer/Project/DerivedData/methodAttributes.json
 models/*
+PowerInfer/Project/DerivedData/*
+PowerInfer/Resources/en.lproj/syntaxEN.json
+PowerInfer/Libraries/lib4d-arm64.dylib
