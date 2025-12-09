@@ -108,7 +108,7 @@ Function onResponse($request : 4D:C1709.HTTPRequest; $event : Object)
 		: (This:C1470.range.end=0)  //simple get
 			If ($request.response.status=200)
 				This:C1470._fileHandle:=Null:C1517
-				//This:C1470.start()
+				This:C1470.start()
 			End if 
 		Else   //range get
 			If ([200; 206].includes($request.response.status))
@@ -122,7 +122,7 @@ Function onResponse($request : 4D:C1709.HTTPRequest; $event : Object)
 					4D:C1709.HTTPRequest.new(This:C1470.URL; This:C1470)
 				Else 
 					This:C1470._fileHandle:=Null:C1517
-					//This:C1470.start()
+					This:C1470.start()
 				End if 
 			End if 
 			
