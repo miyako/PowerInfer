@@ -22,7 +22,7 @@ Function start($option : Object) : 4D:C1709.SystemWorker
 	For each ($arg; OB Entries:C1720($option))
 		Case of 
 			: (["model"; "model_url"; \
-				"docker_repo"].includes($arg.key))
+				"docker_repo"; "log_disable"].includes($arg.key))
 				continue
 		End case 
 		$valueType:=Value type:C1509($arg.value)
@@ -40,6 +40,8 @@ Function start($option : Object) : 4D:C1709.SystemWorker
 				//
 		End case 
 	End for each 
+	
+	SET TEXT TO PASTEBOARD:C523($command)
 	
 	return This:C1470.controller.execute($command; $isStream ? $option.model : Null:C1517; $option.data).worker
 	
